@@ -1,62 +1,81 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import SubmitButton from "./submitButton";
 
 const Output = (props) => {
-    let [keysArray, setKeysArray] = useState([]);
-    let [valuesArray, setValuesArray] = useState([]);
-    const convertPropsToVariables = () => {
-        setKeysArray(props.keysArray);
-        console.log(keysArray);
-
-        setValuesArray(props.valuesArray);
-        console.log(valuesArray);
-    };
+    let keysArray = props.keysArray;
+    let valuesArray = props.valuesArray;
+    let test = props.test;
+    let cka = props.cka;
+    let cva = props.cva;
 
     let auditResultsObject = {};
-    const combine = () => {
+    const Combine = () => {
         keysArray.forEach((element, i) => auditResultsObject[element] = valuesArray[i]);
         console.log(auditResultsObject);
+
     };
 
-   let [objectKeys, setObjectKeys] = useState([])
-   let [objectValues, setObjectValues] = useState([])
-    const values = () => {
+    let [objectKeys, setObjectKeys] = useState([])
+    let [objectValues, setObjectValues] = useState([])
+    const Values = () => {
         setObjectKeys(Object.keys(auditResultsObject));
         setObjectValues(Object.values(auditResultsObject));
-        
-        return {objectKeys, objectValues};
+
+        return { objectKeys, objectValues };
     };
 
-    const Test = ()=> {
-        convertPropsToVariables();
-        combine();
-        values();
-    };
+    const HandleSubmit = () => {
+        cka();
+        cva();
+        Combine();
+        Values();
+    }
 
-        return (
-            <div className='customerDetails'>
-                <span>A. CUSTOMER DETAILS</span>
-                <div className='keys'>
-                    {objectKeys.map((item, index) => {
-                        return (
-                            <div key={`div-${index}`}>
-                                <p key={index}>{`${item} :`}</p>
-                            </div>
-                        )
-                    })}
-                </div>
-                <div className="values">
-                    {objectValues.map((item, index) => {
-                        return (
-                            <div key={`div-${index}`}>
-                                <p key={index}>{item}</p>
-                            </div>
-                        )
-                    })}
-                </div>
-                <button onClick={Test}>Test</button>
-                {/* <button onClick={combine}>com</button> */}
+    // useEffect(()=> {
+    //     Combine();
+    // });
+
+    // useEffect(()=> {
+    //     values();
+    // });
+
+    return (
+        <div className='printPage'>
+            <div className="submitButton">
+                <SubmitButton handleSubmit={HandleSubmit} />
             </div>
-        );
+            
+            <span className="sectionHeader">A. CUSTOMER DETAILS</span>
+            <br />
+            <div className='keys'>
+                {objectKeys.map((item, index) => {
+                    return (
+                        <div key={`div-${index}`}>
+                            <p key={index}>{`${item} :`}</p>
+                        </div>
+                    )
+                })}
+            </div>
+            
+            <div className="values">
+
+
+                {objectValues.map((item, index) => {
+                    return (
+                        <div key={`div-${index}`}>
+                            <p key={index}>{item}</p>
+                        </div>
+                    )
+                })}
+
+            </div>
+
+            {/* <button onClick={Test}>Test</button> */}
+            {/* <button onClick={Combine}>com</button> */}
+        </div>
+    );
+
+
 }
 
 

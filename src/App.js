@@ -2,10 +2,12 @@ import './App.css';
 import { useState } from "react";
 import Forms from './Forms';
 import Output from './ouput';
+import Tit from './ouput';
 
 function App() {
   const [keysArray, setKeyArray] = useState([]);
   const [valuesArray, setValuesArray] = useState([]);
+  const [func, setFunc] = useState();
 
   // let keys;
   const createKeysArray = () => {
@@ -19,31 +21,29 @@ function App() {
   }
 
   const createValuesArray = ()=> {
+    //See if you can reuse keys instead of creating formValues
     let formValues = Array.from(document.getElementsByClassName('input-field'));
     formValues.forEach((function (entry) {
       valuesArray.push(entry.value);
     }));
     return valuesArray; 
   }
-
+  
   const handleSubmit = ()=> {
     createKeysArray();
     createValuesArray();
-  
+    
   }
 
-  const con = () => {
- 
-    console.log(keysArray);
+  const Test = ()=> {
+    console.log('test');
   }
-
 
   return (
     <div className="App">
       <Forms />
-      <button className="btn btn-primary" id="name-submit"onClick={handleSubmit}>Submit</button>
-      <button className="btn btn-primary" onClick={con}>Console</button>
-      <Output keysArray={keysArray} valuesArray={valuesArray}/>
+      <Output keysArray={keysArray} valuesArray={valuesArray} cka={createKeysArray} cva={createValuesArray} test={Test}/>
+     
     </div>
   );
 }
