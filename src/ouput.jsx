@@ -4,9 +4,8 @@ import SubmitButton from "./submitButton";
 const Output = (props) => {
     let keysArray = props.keysArray;
     let valuesArray = props.valuesArray;
-    let test = props.test;
-    let cka = props.cka;
-    let cva = props.cva;
+    let createKeysArray = props.createKeysArray;
+    let createValuesArray = props.createValuesArray;
 
     let auditResultsObject = {};
     const Combine = () => {
@@ -25,8 +24,8 @@ const Output = (props) => {
     };
 
     const HandleSubmit = () => {
-        cka();
-        cva();
+        createKeysArray();
+        createValuesArray();
         Combine();
         Values();
     }
@@ -44,7 +43,6 @@ const Output = (props) => {
             <div className="submitButton">
                 <SubmitButton handleSubmit={HandleSubmit} />
             </div>
-            
             <span className="sectionHeader">A. CUSTOMER DETAILS</span>
             <br />
             <div className='keys'>
@@ -55,11 +53,8 @@ const Output = (props) => {
                         </div>
                     )
                 })}
-            </div>
-            
+            </div>          
             <div className="values">
-
-
                 {objectValues.map((item, index) => {
                     return (
                         <div key={`div-${index}`}>
@@ -67,11 +62,7 @@ const Output = (props) => {
                         </div>
                     )
                 })}
-
             </div>
-
-            {/* <button onClick={Test}>Test</button> */}
-            {/* <button onClick={Combine}>com</button> */}
         </div>
     );
 

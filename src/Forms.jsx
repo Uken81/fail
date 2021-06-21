@@ -6,13 +6,13 @@ const Forms = () => {
             <fieldset>
                 <legend>Customer Information</legend>
                 <label htmlFor="name">Name:</label>
-                <input type="text" className="input-field" id="name" name="name"/><br /><br />
+                <input type="text" className="input-field" id="name" name="name" data-tags="Customer" test="test"/><br /><br />
                 <label htmlFor="address">Address:</label>
-                <input type="text" className="input-field" id="address" name="address"/><br /><br />
+                <input type="text" className="input-field" id="address" name="address" data-tags="Address"/><br /><br />
                 <label htmlFor="home-phone">Home Phone:</label>
-                <input type="tel" className="input-field" id="hphone" name="hphone"/><br /><br />
+                <input type="tel" className="input-field" id="hphone" name="hphone" data-tags="Home Phone"/><br /><br />
                 <label htmlFor="mobile-phone">Mobile:</label>
-                <input type="tel" className="input-field" id="mphone" name="mphone"/><br /><br />
+                <input type="tel" className="input-field" id="mphone" name="mphone" data-tags="Mobile Phone"/><br /><br />
             </fieldset>
             <span>B. ADDRESS OF THE INSTALLATION TO BE AUDITED</span>
             <fieldset>

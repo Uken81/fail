@@ -2,20 +2,21 @@ import './App.css';
 import { useState } from "react";
 import Forms from './Forms';
 import Output from './ouput';
-import Tit from './ouput';
 
 function App() {
   const [keysArray, setKeyArray] = useState([]);
   const [valuesArray, setValuesArray] = useState([]);
-  const [func, setFunc] = useState();
 
-  // let keys;
   const createKeysArray = () => {
     let keys = Array.from(document.getElementsByClassName('input-field'));
+    
+    console.log(keys);
+
     keys.forEach((function (entry) {
-      keysArray.push(entry.name);
+      keysArray.push(entry.dataset.tags);
     }));
     console.log(keys);
+    console.log(keysArray);
 
     return keysArray;
   }
@@ -28,22 +29,36 @@ function App() {
     }));
     return valuesArray; 
   }
-  
-  const handleSubmit = ()=> {
-    createKeysArray();
-    createValuesArray();
-    
-  }
-
+let arr = [];
   const Test = ()=> {
-    console.log('test');
+    let tid = document.getElementsByTagName('input');
+    
+    console.log(tid);
+   
+    
+
+    // for(let i = 0; i < tid.length; i++) {
+    //   arr.push(tid[i].dataset.tags)
+    // }
+  console.log(arr);
+  
   }
 
+  function wtw() {
+    console.log('wtw???');
+  }
+  
   return (
     <div className="App">
       <Forms />
-      <Output keysArray={keysArray} valuesArray={valuesArray} cka={createKeysArray} cva={createValuesArray} test={Test}/>
-     
+      <button onClick={Test}>test</button>
+      <Output 
+      keysArray={keysArray} 
+      valuesArray={valuesArray} 
+      createKeysArray={createKeysArray} 
+      createValuesArray={createValuesArray}
+      />
+    
     </div>
   );
 }
